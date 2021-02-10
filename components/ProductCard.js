@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useAppContext } from './context/AppContext';
+import Image from 'next/image';
 
 function ProductCard({ id, slug, image, name, price }) {
   const appContext = useAppContext();
@@ -23,11 +24,13 @@ function ProductCard({ id, slug, image, name, price }) {
     <Link href={`/product/${slug}`}>
       <a className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
         <div
-          className="flex items-end justify-end h-56 w-full bg-cover"
-          style={{
-            backgroundImage: `url('${image.sourceUrl})`,
-          }}
+          className="flex items-end"
         >
+                    <div className="w-full">
+                      <div className="image-container">
+                        <Image src={image.sourceUrl} layout="fill" className="image" />
+                      </div>
+                    </div>
           <button
             className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
             onClick={handleAddToCard}
